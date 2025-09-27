@@ -1,0 +1,3 @@
+venv/
+data-pipeline/src/config.py
+data-pipeline/src/__pycache__
