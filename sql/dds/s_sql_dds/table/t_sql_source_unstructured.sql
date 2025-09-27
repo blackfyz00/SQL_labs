@@ -4,7 +4,7 @@ CREATE SCHEMA IF NOT EXISTS s_sql_dds;
 CREATE TABLE IF NOT EXISTS s_sql_dds.t_sql_source_unstructured (
     order_id VARCHAR(100),
     customer_id VARCHAR(100),
-    order_date VARCHAR(100)), -- Храним как VARCHAR, так как даты могут быть некорректными
+    order_date VARCHAR(100), -- Храним как VARCHAR, так как даты могут быть некорректными
     product_category VARCHAR(100),
     product_name VARCHAR(100),
     quantity VARCHAR(100), -- Используем VARCHAR(100), чтобы учесть возможные NULL и некорректные значения
