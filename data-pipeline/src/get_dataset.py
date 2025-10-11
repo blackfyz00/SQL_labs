@@ -31,7 +31,7 @@ def get_dataset(n_rows=100000):
 
     for i in range(n_rows):
         # order_id (добавляем дубликаты с вероятностью 5%)
-        order_id = f'ORD{i:06d}' if random.random() > 0.05 else f'ORD{random.randint(0, i):06d}'
+        order_id = f'ORD{i:06d}' if random.random() > 0.02 else f'ORD{random.randint(0, i):06d}'
         data['order_id'].append(order_id)
 
         # customer_id (10% пропусков)
@@ -47,29 +47,29 @@ def get_dataset(n_rows=100000):
 
         # product_category (5% ошибок в написании)
         category = random.choice(categories)
-        if random.random() < 0.05:
+        if random.random() < 0.02:
             category = category + 'а'  # Например, "Электроникаа"
         data['product_category'].append(category)
 
         # product_name (10% пропусков)
-        data['product_name'].append(fake.word() if random.random() > 0.1 else None)
+        data['product_name'].append(fake.word() if random.random() > 0.02 else None)
 
         # quantity (10% отрицательных или пропусков)
-        if random.random() < 0.1:
+        if random.random() < 0.02:
             quantity = random.choice([-1, None])
         else:
             quantity = random.randint(1, 10)
         data['quantity'].append(quantity)
 
         # price (10% отрицательных или пропусков)
-        if random.random() < 0.1:
+        if random.random() < 0.02:
             price = random.choice([-100.0, None])
         else:
             price = round(random.uniform(10.0, 1000.0), 2)
         data['price'].append(price)
 
         # total_amount (20% несоответствий quantity * price)
-        if quantity is not None and price is not None and random.random() > 0.2:
+        if quantity is not None and price is not None and random.random() > 0.06:
             total_amount = round(quantity * price, 2)
         else:
             total_amount = round(random.uniform(-100.0, 10000.0), 2)
@@ -77,7 +77,7 @@ def get_dataset(n_rows=100000):
 
         # status (5% ошибок в написании)
         status = random.choice(statuses)
-        if random.random() < 0.05:
+        if random.random() < 0.02:
             status = status + '_error'
         data['status'].append(status)
 

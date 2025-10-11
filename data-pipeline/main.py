@@ -12,7 +12,7 @@ def main():
     try:
         # Генерация датасета
         logger.info("Генерация датасета")
-        df = get_dataset(n_rows=1000)
+        df = get_dataset()
         logger.info(f"Сгенерировано {len(df)} строк")
 
         # Загрузка в базу данных

@@ -1,7 +1,7 @@
 # src/load_data_to_db.py
 import pandas as pd
 import psycopg2
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 import logging
 
 def load_data_to_db(df, db_params):
@@ -20,6 +20,14 @@ def load_data_to_db(df, db_params):
             f"postgresql+psycopg2://{db_params['user']}:{db_params['password']}@"
             f"{db_params['host']}:{db_params['port']}/{db_params['database']}"
         )
+
+
+        logger.info("Очистка таблицы t_sql_source_unstructured")
+
+        #Очистка таблицы
+        with engine.connect() as conn:
+            with conn.begin():  # Явная транзакция
+                conn.execute(text("TRUNCATE TABLE s_sql_dds.t_sql_source_unstructured"))
 
         # Загрузка данных в таблицу
         logger.info("Загрузка данных в таблицу t_sql_source_unstructured")
