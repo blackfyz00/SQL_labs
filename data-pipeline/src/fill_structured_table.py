@@ -18,7 +18,7 @@ def fill_structured_table(start_date: date, end_date: date, conn_params: dict):
 
         # Вызываем процедуру
         cur.execute(
-            "CALL s_sql_dds.load_clean_orders(%s, %s)",
+            "SELECT s_sql_dds.fn_etl_data_load(%s, %s)",
             (start_date, end_date)
         )
 
