@@ -1,7 +1,7 @@
 # main.py
 from src.get_dataset import get_dataset
 from src.load_data_to_db import load_data_to_db
-from config import db_params
+from src.config import db_params
 import logging
 
 def main():

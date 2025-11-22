@@ -2,3 +2,4 @@ venv/
 data-pipeline/src/config.py
 data-pipeline/src/__pycache__
 data-pipeline/__pycache__
+funcs/
